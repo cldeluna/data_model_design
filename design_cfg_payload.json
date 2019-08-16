@@ -1,0 +1,600 @@
+[
+  {
+  "Cisco-IOS-XE-native:native": {
+    "version": "16.9",
+    "order": 2,
+    "boot-start-marker": [null],
+    "boot-end-marker": [null],
+    "service": {
+      "timestamps": {
+        "debug": {
+          "datetime": {
+            "msec": {
+            }
+          }
+        },
+        "log": {
+          "datetime": {
+            "msec": [null]
+          }
+        }
+      },
+      "config": "The primary WAN router, oceana-rtr01, will host the primary 10G circuit to the partner data center.  It will also host the Primary 1G DIA Internet circuit."
+    },
+    "platform": {
+      "Cisco-IOS-XE-platform:console": {
+        "output": "virtual",
+        "image": "images/router.png"
+      }
+    },
+    "hostname": "oceana-rtr01",
+    "enable": {
+      "secret": {
+        "type": "0",
+        "secret": "Cisc0123"
+      }
+    },
+    "username": [
+      {
+        "name": "admin",
+        "privilege": 15,
+        "secret": {
+          "encryption": "0",
+          "secret": "Cisc0123"
+        }
+      }
+    ],
+    "ip": {
+      "domain": {
+        "name": "uwaco.net"
+      },
+      "domain-lookup": {
+      },
+      "forward-protocol": {
+        "protocol": "nd"
+      },
+      "name-server": {
+        "no-vrf": ["8.8.8.8"]
+      },
+      "route": {
+        "ip-route-interface-forwarding-list": [
+          {
+            "prefix": "0.0.0.0",
+            "mask": "255.255.255.255",
+            "fwd-list": [
+              {
+                "fwd": "10.1.10.1"
+              }
+            ]
+          }
+        ]
+      },
+      "Cisco-IOS-XE-http:http": {
+        "server": false,
+        "secure-server": true,
+        "client": {
+          "source-interface": "GigabitEthernet1"
+        }
+      }
+    },
+    "interface": {
+      "GigabitEthernet": [
+        {
+          "name": "1",
+          "ip": {
+            "address": {
+              "dhcp": {
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        },
+        {
+          "name": "2",
+          "shutdown": [null],
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "1.1.1.1",
+                "mask": "255.255.255.0"
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        },
+        {
+          "name": "3",
+          "shutdown": [null],
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "2.2.2.1",
+                "mask": "255.255.255.0"
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        }
+      ],
+      "Loopback": [
+        {
+          "name": 0,
+          "description": "Source Loopback0",
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "192.0.2.1",
+                "mask": "255.255.255.255"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "control-plane": {
+    },
+    "clock": {
+      "timezone": {
+        "zone": "EST",
+        "hours": -5,
+        "minutes": 0
+      }
+    },
+    "aaa": {
+      "Cisco-IOS-XE-aaa:new-model": [null],
+      "Cisco-IOS-XE-aaa:authorization": {
+        "exec": [
+          {
+            "name": "default",
+            "a1": {
+              "local": [null]
+            }
+          }
+        ]
+      },
+      "Cisco-IOS-XE-aaa:session-id": "common"
+    },
+    "login": {
+      "on-success": {
+        "log": {
+        }
+      }
+    },
+    "multilink": {
+      "Cisco-IOS-XE-ppp:bundle-name": "authenticated"
+    },
+    "redundancy": {
+    },
+    "spanning-tree": {
+      "Cisco-IOS-XE-spanning-tree:extend": {
+        "system-id": [null]
+      }
+    },
+    "subscriber": {
+      "templating": [null]
+    },
+    "crypto": {
+      "Cisco-IOS-XE-crypto:pki": {
+        "trustpoint": [
+          {
+            "id": "TP-self-signed-611956378",
+            "enrollment": {
+              "selfsigned": [null]
+            },
+            "revocation-check": "none",
+            "rsakeypair": {
+              "key-label": "TP-self-signed-611956378"
+            },
+            "subject-name": "cn=IOS-Self-Signed-Certificate-611956378"
+          }
+        ],
+        "certificate": {
+          "chain": [
+            {
+              "name": "TP-self-signed-611956378",
+              "certificate": [
+                {
+                  "serial": "01",
+                  "certtype": "self-signed"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "router": {
+      "Cisco-IOS-XE-ospf:ospf": [
+        {
+          "id": 1,
+          "router-id": "192.0.2.1",
+          "network": [
+            {
+              "ip": "0.0.0.0",
+              "mask": "255.255.255.255",
+              "area": 0
+            }
+          ],
+          "nsf": {
+          }
+        }
+      ]
+    },
+    "license": {
+      "udi": {
+        "pid": "CSR1000V",
+        "sn": "9YES7U3F0TA"
+      }
+    },
+    "line": {
+      "console": [
+        {
+          "first": "0",
+          "stopbits": "1"
+        }
+      ],
+      "vty": [
+        {
+          "first": 0,
+          "last": 5
+        }
+      ]
+    },
+    "ntp": {
+      "Cisco-IOS-XE-ntp:master": {
+      }
+    },
+    "Cisco-IOS-XE-diagnostics:diagnostic": {
+      "bootup": {
+        "level": "minimal"
+      }
+    }
+  }
+},
+{
+  "Cisco-IOS-XE-native:native": {
+    "version": "16.9",
+    "order": 2,
+    "boot-start-marker": [null],
+    "boot-end-marker": [null],
+    "service": {
+      "timestamps": {
+        "debug": {
+          "datetime": {
+            "msec": {
+            }
+          }
+        },
+        "log": {
+          "datetime": {
+            "msec": [null]
+          }
+        }
+      },
+      "config": "The secondary WAN router, oceana-rtr02, will host the secondary 10G circuit to the partner data center as well as the secondary DIA Internet circuit (also 1G). "
+    },
+    "platform": {
+      "Cisco-IOS-XE-platform:console": {
+        "output": "virtual",
+        "image": "images/router.png"
+      }
+    },
+    "hostname": "oceana-rtr02",
+    "enable": {
+      "secret": {
+        "type": "0",
+        "secret": "Cisc0123"
+      }
+    },
+    "username": [
+      {
+        "name": "admin",
+        "privilege": 15,
+        "secret": {
+          "encryption": "0",
+          "secret": "Cisc0123"
+        }
+      }
+    ],
+    "ip": {
+      "domain": {
+        "name": "uwaco.net"
+      },
+      "domain-lookup": {
+      },
+      "forward-protocol": {
+        "protocol": "nd"
+      },
+      "name-server": {
+        "no-vrf": ["8.8.8.8"]
+      },
+      "route": {
+        "ip-route-interface-forwarding-list": [
+          {
+            "prefix": "0.0.0.0",
+            "mask": "255.255.255.255",
+            "fwd-list": [
+              {
+                "fwd": "10.1.10.1"
+              }
+            ]
+          }
+        ]
+      },
+      "Cisco-IOS-XE-http:http": {
+        "server": false,
+        "secure-server": true,
+        "client": {
+          "source-interface": "GigabitEthernet1"
+        }
+      }
+    },
+    "interface": {
+      "GigabitEthernet": [
+        {
+          "name": "1",
+          "ip": {
+            "address": {
+              "dhcp": {
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        },
+        {
+          "name": "2",
+          "shutdown": [null],
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "2.2.2.1",
+                "mask": "255.255.255.0"
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        },
+        {
+          "name": "3",
+          "shutdown": [null],
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "3.3.3.1",
+                "mask": "255.255.255.0"
+              }
+            }
+          },
+          "mop": {
+            "enabled": false,
+            "sysid": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        }
+      ],
+      "Loopback": [
+        {
+          "name": 0,
+          "description": "Source Loopback0",
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "192.0.2.1",
+                "mask": "255.255.255.255"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "control-plane": {
+    },
+    "clock": {
+      "timezone": {
+        "zone": "EST",
+        "hours": -5,
+        "minutes": 0
+      }
+    },
+    "aaa": {
+      "Cisco-IOS-XE-aaa:new-model": [null],
+      "Cisco-IOS-XE-aaa:authorization": {
+        "exec": [
+          {
+            "name": "default",
+            "a1": {
+              "local": [null]
+            }
+          }
+        ]
+      },
+      "Cisco-IOS-XE-aaa:session-id": "common"
+    },
+    "login": {
+      "on-success": {
+        "log": {
+        }
+      }
+    },
+    "multilink": {
+      "Cisco-IOS-XE-ppp:bundle-name": "authenticated"
+    },
+    "redundancy": {
+    },
+    "spanning-tree": {
+      "Cisco-IOS-XE-spanning-tree:extend": {
+        "system-id": [null]
+      }
+    },
+    "subscriber": {
+      "templating": [null]
+    },
+    "crypto": {
+      "Cisco-IOS-XE-crypto:pki": {
+        "trustpoint": [
+          {
+            "id": "TP-self-signed-611956378",
+            "enrollment": {
+              "selfsigned": [null]
+            },
+            "revocation-check": "none",
+            "rsakeypair": {
+              "key-label": "TP-self-signed-611956378"
+            },
+            "subject-name": "cn=IOS-Self-Signed-Certificate-611956378"
+          }
+        ],
+        "certificate": {
+          "chain": [
+            {
+              "name": "TP-self-signed-611956378",
+              "certificate": [
+                {
+                  "serial": "01",
+                  "certtype": "self-signed"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "router": {
+      "Cisco-IOS-XE-ospf:ospf": [
+        {
+          "id": 1,
+          "router-id": "192.0.2.1",
+          "network": [
+            {
+              "ip": "0.0.0.0",
+              "mask": "255.255.255.255",
+              "area": 0
+            }
+          ],
+          "nsf": {
+          }
+        }
+      ]
+    },
+    "license": {
+      "udi": {
+        "pid": "CSR1000V",
+        "sn": "9YES7U3F0TA"
+      }
+    },
+    "line": {
+      "console": [
+        {
+          "first": "0",
+          "stopbits": "1"
+        }
+      ],
+      "vty": [
+        {
+          "first": 0,
+          "last": 5
+        }
+      ]
+    },
+    "ntp": {
+      "Cisco-IOS-XE-ntp:master": {
+      }
+    },
+    "Cisco-IOS-XE-diagnostics:diagnostic": {
+      "bootup": {
+        "level": "minimal"
+      }
+    }
+  }
+},
+  {
+    "InternetCloud": {
+      "version": "1",
+      "order": 1,
+      "service": {
+        "config": "The new data center will support redundant 1G DIA Internet circuits."
+      },
+      "platform": {
+        "CloudImage": {
+          "output": "virtual",
+          "image": "images/cloud.png"
+        }
+      },
+      "hostname": "The Internet",
+      "enable": {
+      }
+    }
+  },
+  {
+    "ACICloud": {
+      "version": "1",
+      "order": 3,
+      "service": {
+        "config": "The ACI Data Center Fabric will be built out with 4 spines, 12 leafs, and 3 APIC controllers."
+      },
+      "platform": {
+        "CloudImage": {
+          "output": "virtual",
+          "image": "cisco_images/blue_cloud.png"
+        }
+      },
+      "hostname": "ACI Fabric",
+      "enable": {
+      }
+    }
+  },
+  {
+    "ServersStorage": {
+      "version": "1",
+      "order": 4,
+      "service": {
+        "config": "Server and storage bare metal hosts will be connected directly to the ACI Leafs. ESX Hosts will utilize a combination of VPC and Trunk Uplinks depending on function.  The NetApp storage applicances will utilize Etherchannel/vPC uplinks."
+      },
+      "platform": {
+        "CloudImage": {
+          "output": "virtual",
+          "image": "cisco_images/PNG/storage server.png"
+        }
+      },
+      "hostname": "Servers and Storage",
+      "enable": {
+      }
+    }
+  }   
+]
+
+
+
+

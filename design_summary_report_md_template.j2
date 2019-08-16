@@ -1,0 +1,132 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+# High Level Design Document
+##   {{ info['title'] }}
+<br>
+<br>
+<br>
+Author: **{{ info['author']  }}**
+<br>
+Company: _{{ info['company']  }}_
+<br>
+Email: _{{ info['email']  }}_
+<br>
+<br>
+Date:   {{ info['dattim'] }}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+![High Level Diagram](./images/{{ info['logo'] }})
+
+<div style="page-break-after: always; visibility: hidden"> 
+\pagebreak 
+</div>
+
+## 1. Introduction
+<br>
+{{ info['intro_text'] }}
+<br>
+<br>
+<br>
+
+<div style="page-break-after: always; visibility: hidden">
+\pagebreak
+</div>
+
+## 2. Design Overview
+<br>
+{{ info['overview_text'] }}
+<br>
+![High Level Diagram](./{{ info['hlddiagram'] }})
+<br>
+<br>
+
+<div style="page-break-after: always; visibility: hidden">
+\pagebreak
+</div>
+
+## 3. Equipment Details
+<br>
+
+{% for line in payload %}
+
+{% for key,value in line.items() %}
+
+{% if "Cisco" in key  %}
+### Equipment Details for Cisco device {{ key }}
+
+<br>
+{{ value['service']['config'] }}
+<br>
+#### General Information
+<br>
+Model: {{ value['license']['udi']['pid'] }}
+<br>
+Serial Number: {{ value['license']['udi']['sn'] }}
+<br>
+Hostname: {{ value['hostname'] }}
+<br>
+Software Version: {{ value['version'] }}
+<br>
+![]({{ value['platform']['Cisco-IOS-XE-platform:console']['image'] }})
+<br>
+{{ value['ip']['domain']['name'] }}
+<br>
+{{ value['ip']['name-server']['no-vrf'] }}
+<br>
+#### Interfaces
+<br>
+{% for intkey, intval in value['interface'].items() %}
+
+{% for line in intval %}
+{{ intkey  }}{{ line['name'] }}
+<br>
+Description: {{ line['description']  }}
+IP Information: {{ line['ip']['address']  }}
+<br>
+{% endfor %}
+
+{% endfor -%}
+
+{% else %}
+
+### 3. Details for {{ key }}
+<br>
+{{ value['service']['config'] }}
+<br>
+
+{% for k, val in value['platform'].items() %}
+{{ intkey  }}
+<br>
+![key]({{ val['image'] }})
+{{ value['hostname'] }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+<br>
+<br>
+<br>
+## 4. Conclusion
+<br>
+{{ info['conclusion_text'] }}

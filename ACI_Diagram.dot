@@ -1,0 +1,33 @@
+strict graph "" {
+	graph [color=red,
+		fontname=arial,
+		label="ACI Fabric Edge Network Diagram",
+		splines=compound
+	];
+	node [label="\N"];
+	"The Internet"	 [color="#ffffff",
+		image="images/cloud.png",
+		label="The Internet",
+		labelloc=c];
+	"oceana-rtr01"	 [color="#ffffff",
+		image="images/router.png",
+		label="oceana-rtr01",
+		labelloc=c];
+	"The Internet" -- "oceana-rtr01";
+	"oceana-rtr02"	 [color="#ffffff",
+		image="images/router.png",
+		label="oceana-rtr02",
+		labelloc=c];
+	"The Internet" -- "oceana-rtr02";
+	"ACI Fabric"	 [color="#ffffff",
+		image="cisco_images/blue_cloud.png",
+		label="ACI Fabric",
+		labelloc=c];
+	"oceana-rtr01" -- "ACI Fabric";
+	"oceana-rtr02" -- "ACI Fabric";
+	"Servers and Storage"	 [color="#ffffff",
+		image="cisco_images/PNG/storage server.png",
+		label="Servers and Storage",
+		labelloc=c];
+	"ACI Fabric" -- "Servers and Storage";
+}
