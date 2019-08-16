@@ -43,10 +43,10 @@ I was excited about the drawing capabilities of Cisco's APIC-EM and actually sub
 
 ### Requirements
 
-Jinja2==2.10.1
-MarkupSafe==1.1.1
-pygraphviz==1.5
-requests==2.22.0
+- Jinja2==2.10.1
+- MarkupSafe==1.1.1
+- pygraphviz==1.5
+- requests==2.22.0
 
 
 ### Execution
