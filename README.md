@@ -1,7 +1,7 @@
 Data Model Driven Network Design
 =============================================
 
-This repository provides a basic example or proof of concept of network design material driven by configuration payload data in a (relatively) standard data model as discussed in my post, _The Struggle with Structure_ on [The Gratuitous Arp](https://gratuitous-arp.net/).
+This repository provides a basic example or proof of concept of network design material driven by configuration payload data in a (relatively) standard data model as discussed in my post, _The Struggle with Structure_ on [The Gratuitous Arp](https://gratuitous-arp.net/data-models-and-structured-data-for-network-designs-and-configuration/).
 
 The intent of this repository is to showcase how a data model driven design process can support the end to end design process by using the configuration payload provided in a structured format to not only drive the configuration but also drive the documentation.
 
